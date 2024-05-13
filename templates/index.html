@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./static/style.css">
+    <title>Anty Brand</title>
+</head>
+<body>
+    <header class="header">
+            <a href=""><img src="./static/imgs/download.jpg" class="imgh1"></a>
+            <a href="/cart">
+                <img src="./static/imgs/bolsa-de-compras.png" class="imgh2">
+            </a>
+    </header>
+    <main class="productslines">
+        <div class="products1">
+            <div class="camisa1">
+                <img src="../static/imgs/antycamisapreta.webp" width="50%" height="50%" class="lineimg">
+                <a href="/starblack" class="alink">   
+                    <span>Camiseta Star Black - R$189,90</span>
+                </a>
+                <button class="botao" onclick="addToCart('Camiseta Star Black', 189,90)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="camisa1">
+                <img src="../static/imgs/antycamisabranca.webp" width="52%" height="52%" class="lineimg">
+                <a href="/starwhite" class="alink">
+                    <span>Camiseta Star White - R$189,90</span>
+                </a>
+                <button class="botao" onclick="addToCart('Camiseta Star White', 189,90)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        <div class="products2">
+            <div class="moletom1">
+                <img src="../static/imgs/moletompretoanty.webp" width="50%" height="50%" class="lineimg">
+                <a href="/moletompreto" class="alink">
+                    <span>Moletom Hyth Black - R$329,90</span>
+                </a>
+                <button class="botao" onclick="addToCart('Moletom Hyth Black', 329,90)">Adicionar ao Carrinho</button>
+            </div>
+            <div class="moletom1">
+                <img src="../static/imgs/moletombrancoanty.webp" width="50%" height="50%" class="lineimg">
+                <a href="/moletombranco" class="alink">
+                    <span>Moletom Hyth White - R$329,90</span>
+                </a>
+                <button class="botao" onclick="addToCart('Moletom Hyth White', 329,90)">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        <script>
+            function addToCart(product, price) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ product, price });
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+        </script>
+    </main>
+    <footer class="footer">
+        <h4 class="footerh">2024 - Todos Direitos Reservados - AntyBrand</h4>
+        <a href="./quemsomos" class="qmsomos">Quem Somos</a>
+    </footer>
+</body>
+</html>
