@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./static/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <a href="/"><img src="./static/imgs/download.jpg" class="imgh1"></a>
+        <a href="/cart">
+            <img src="./static/imgs/bolsa-de-compras.png" class="imgh2">
+        </a>
+    </header>
+    <main>
+        <section class="pgsprod">
+            <div class="pgsprodimgs">
+                <img src="../static/imgs/moletombrancoanty.webp" width="40%">
+                <img src="../static/imgs/moletombrancocara.webp" width="40%">
+            </div>
+            <div class="pgsprodtxts">
+                <h3>Moletom Hyth Branco</h3>
+                <p>R$329,90</p>
+                <button class="botao" onclick="addToCart('Moletom Hyth Branco', 329,90)">Adicionar ao Carrinho</button>
+            </div>
+        </section>
+        <script>
+            function addToCart(product, price) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push({ product, price });
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+        </script>
+    </main>
+    <footer class="footer">
+        <h4 class="footerh">2024 - Todos Direitos Reservados - AntyBrand</h4>
+        <a href="./quemsomos" class="qmsomos">Quem Somos</a>
+    </footer>
+</body>
+</html>

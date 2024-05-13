@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./static/style.css">
+    <title>Anty Brand</title>
+</head>
+<body>
+    <header class="header">
+        <a href="/"><img src="./static/imgs/download.jpg" class="imgh1"></a>
+        <a href="cart.html">
+            <img src="./static/imgs/bolsa-de-compras.png" class="imgh2">
+        </a>
+    </header>
+    <h1 class="tcart">Carrinho de Compras</h1>
+    <div class="ccart" id="cart"></div>
+
+    <script>
+        function renderCart() {
+            const cartElement = document.getElementById('cart');
+            cartElement.innerHTML = '<h3>Produtos</h3>';
+            cartElement.classList.add('cart-geral'); 
+            
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.textContent = `${item.product} - $${item.price}`;
+                itemElement.classList.add('cart-item'); 
+                
+                // Botão para remover item do carrinho
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remover';
+                removeButton.classList.add('remove-button');
+                removeButton.onclick = () => removeFromCart(index); // Chama a função para remover o item correspondente
+                itemElement.appendChild(removeButton);
+
+                cartElement.appendChild(itemElement);
+            });
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove o item do carrinho pelo índice
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart(); // Renderiza o carrinho atualizado
+        }
+
+        renderCart();
+    </script>
+    <footer class="footerCart">
+        <h4 class="footerh">2024 - Todos Direitos Reservados - AntyBrand</h4>
+        <a href="./quemsomos.html" class="qmsomos">Quem Somos</a>
+    </footer>
+</body>
