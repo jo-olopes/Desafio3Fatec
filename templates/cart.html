@@ -8,9 +8,14 @@
 <body>
     <header class="header">
         <a href="/"><img src="./static/imgs/download.jpg" class="imgh1"></a>
-        <a href="cart.html">
-            <img src="./static/imgs/bolsa-de-compras.png" class="imgh2">
-        </a>
+        <div class="btnheader">
+            <a href="/cart">
+                <img src="./static/imgs/bolsa-de-compras.png" class="imgh2">
+            </a>
+            <a href="/login">
+                <img src="../static/imgs/avatarlogin.png" class="imgh3">
+            </a>
+        </div>
     </header>
     <h1 class="tcart">Carrinho de Compras</h1>
     <div class="ccart" id="cart"></div>
@@ -35,7 +40,7 @@
                 itemElement.appendChild(removeButton);
 
                 cartElement.appendChild(itemElement);
-            });
+            }); 
         }
 
         function removeFromCart(index) {

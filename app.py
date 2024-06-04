@@ -1,6 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
+from flask_mysqldb import MySQL
 
 app = Flask(__name__)
+app.config['MYSQL_HOST'] = 'localhost'  # ou o endereço do seu banco de dados MySQL
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '32001josue@A'
+app.config['MYSQL_DB'] = ''
+mysql = MySQL(app)
 
 @app.route('/')
 def home():
@@ -32,6 +38,9 @@ def quemsomos():
 def cart():
     return render_template('cart.html')
 
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 if __name__=="__main__":
     app.run(debug=True)

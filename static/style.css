@@ -16,7 +16,18 @@
         width: 75%;
         height: 75%;
     }
+.btnheader{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+}
     .imgh2{
+        width: 30px;
+        height: 30px;
+    }
+    .imgh3{
         width: 30px;
         height: 30px;
     }
@@ -160,6 +171,44 @@
     justify-content: flex-end;
     align-items: center;
     color: aliceblue;
+}
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 100px;
+    gap: 20px;
+    padding-bottom: 235px;
+}
+.inputBox{
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+}
+.login{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+.cadastrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 30px;
+    padding-bottom: 200px;
+}
+.cadastro{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;  
+    padding-bottom: 165px;
 }
 .footer{
     background-color: black;
