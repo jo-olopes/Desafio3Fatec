@@ -1,8 +1,12 @@
-
-{% extends 'login.html' %}
-{%block css%}<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">{%endblock css%}
-{%block conteudo%}
-
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./static/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Users</title>
+</head>
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -42,42 +46,48 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     header{
-        background:#222!important;
+        background:#000000!important;
     }
     
 </style>
 </head>
 <body>
+    <header class="header">
+        <a href="/"><img src="./static/imgs/download.jpg" class="imgh1"></a>
+        <div class="btnheader">
+            <a href="/cart">
+                <img src="./static/imgs/bolsa-de-compras.png" class="imgh2">
+            </a>
+            <a href="/login">
+                <img src="../static/imgs/avatarlogin.png" class="imgh3">
+            </a>
+        </div>  
+    </header>
 <div class="container">
     <div class="table-container">
         <h1>Users</h1>
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Email</th>
-                    <th>Ações</th>
+                        <th>Email</th>
+                        <th>Senha</th>
                 </tr>
             </thead>
             <tbody>
-                {% for inscricao in inscricoes %}
+                {% for teste in users %}
                 <tr>
-                    <td>{{ inscricao[1] }}</td>
-                    <td>
-                        <form action="{{ url_for('delete', id=inscricao[0]) }}" method="post" onsubmit="return confirmDelete();">
-                            <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                        </form>
-                    </td>
+                    <td>{{ teste[0] }}</td>
+                    <td>{{ teste[1] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
 </div>
-
-<script>
-    function confirmDelete() {
-        return confirm("Tem certeza que deseja excluir este item?");
-    }
-</script>
+<footer class="footer">
+    <h4 class="footerh">2024 - Todos Direitos Reservados - AntyBrand</h4>
+    <a href="./quemsomos" class="qmsomos">Quem Somos</a>
+    <a href="/users" class="users">a</a>
+</footer>
 </body>
-{%endblock conteudo%}
+</html>

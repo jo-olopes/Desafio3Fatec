@@ -9,7 +9,9 @@ body{
     font-family: "Inter",sans-serif;
     font-weight: 400;
 }
-
+.users{
+    color: #000000;
+}
 .header{
     display: flex;
     flex-direction: row;

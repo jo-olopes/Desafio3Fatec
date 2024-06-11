@@ -11,18 +11,10 @@ mysql = MySQL(app)
 @app.route('/users')
 def users():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT id, email, senha FROM users")
+    cur.execute("SELECT email, senha FROM users")
     data = cur.fetchall()
     cur.close()
     return render_template('users.html', users=data)
-
-@app.route('/delete/<int:id>', methods=['POST'])
-def delete(id):
-    cur = mysql.connection.cursor()
-    cur.execute("DELETE FROM users WHERE id = %s", (id,))
-    mysql.connection.commit()
-    cur.close()
-    return redirect(url_for('users'))
 
 @app.route('/')
 def home():
