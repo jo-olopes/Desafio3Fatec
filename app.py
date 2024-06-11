@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for
-from flask_mysqldb import MySQL
+from flask import Flask, render_template, request, redirect, url_for 
+from flask_mysqldb import MySQL 
 
 app = Flask(__name__)
 app.config['MYSQL_HOST'] = '127.0.0.1'  # ou o endereço do seu banco de dados MySQL
@@ -7,6 +7,22 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '32001josue@A'
 app.config['MYSQL_DB'] = 'teste'
 mysql = MySQL(app)
+
+@app.route('/users')
+def users():
+    cur = mysql.connection.cursor()
+    cur.execute("SELECT id, email, senha FROM users")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('users.html', users=data)
+
+@app.route('/delete/<int:id>', methods=['POST'])
+def delete(id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM users WHERE id = %s", (id,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('users'))
 
 @app.route('/')
 def home():
