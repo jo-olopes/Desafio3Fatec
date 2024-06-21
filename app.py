@@ -11,10 +11,18 @@ mysql = MySQL(app)
 @app.route('/users')
 def users():
     cur = mysql.connection.cursor()
-    cur.execute("SELECT email, senha FROM users")
+    cur.execute("SELECT id, email, senha FROM users")
     data = cur.fetchall()
     cur.close()
-    return render_template('users.html', users=data)
+    return render_template('users.html', users=data)    
+
+@app.route('/delete_user/<int:user_id>', methods=['POST'])
+def delete_user(user_id):
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM users WHERE id = %s", (user_id,))
+    mysql.connection.commit()
+    cur.close()
+    return redirect(url_for('users'))
 
 @app.route('/')
 def home():
@@ -36,11 +44,9 @@ def moletombranco():
 def moletompreto():
     return render_template('moletompreto.html')
 
-
 @app.route('/quemsomos')
 def quemsomos():
     return render_template('quemsomos.html')
-
 
 @app.route('/cart')
 def cart():

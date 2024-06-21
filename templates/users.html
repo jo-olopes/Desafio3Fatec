@@ -63,31 +63,37 @@
             </a>
         </div>  
     </header>
-<div class="container">
-    <div class="table-container">
-        <h1>Users</h1>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
+    <div class="container">
+        <div class="table-container">
+            <h1>Users</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
                         <th>Email</th>
                         <th>Senha</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for teste in users %}
-                <tr>
-                    <td>{{ teste[0] }}</td>
-                    <td>{{ teste[1] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                        <td>
+                            <form action="{{ url_for('delete_user', user_id=user[0]) }}" method="post" style="display:inline;">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-<footer class="footer">
-    <h4 class="footerh">2024 - Todos Direitos Reservados - AntyBrand</h4>
-    <a href="./quemsomos" class="qmsomos">Quem Somos</a>
-    <a href="/users" class="users">a</a>
-</footer>
+    <footer class="footer">
+        <h4 class="footerh">2024 - Todos Direitos Reservados - AntyBrand</h4>
+        <a href="./quemsomos" class="qmsomos">Quem Somos</a>
+        <a href="/users" class="users">a</a>
+    </footer>
 </body>
 </html>
